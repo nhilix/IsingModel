@@ -35,13 +35,15 @@ int main(void){
         m_runavg += m_avg[l]/T_RUN;}
         fprintf(fout,"%f \t%f \t%f\n",T,(double)m2_runavg/(T_MEAS*L*L),
                 sqrt((m2_runavg/(T_MEAS*L*L) - m_runavg*m_runavg/(T_MEAS*L*L)/(T_MEAS*L*L))/(T_RUN*T_MEAS*L*L-1)));
-        system("cls");
+        system("clear");
         for(j=0;j<L;j++){
         for(i=0;i<L;i++){
-                if (S[i][j]<0) printf("%c%c",176,176);
-                else printf("%c%c",178,178);}
-        printf("\n");}
-        printf("%2.0f%%",T/(2*TCRIT) * 100);
+                //if (S[i][j]<0) printf("%c%c",176,176);
+                //else printf("%c%c",178,178);}
+		if (S[i][j]<0) printf("◉ ");
+		else printf("◯ ");}
+        printf("\r\n");}
+        printf("%2.0f%%\n",T/(2*TCRIT) * 100);
         if (T<(TCRIT-1) || T>(TCRIT+1)) Tdiv=TDIV;
         else Tdiv = (double) TDIV/10;}}
     fclose(fout);
